@@ -51,19 +51,25 @@
 </html>
 <?php
 	if(isset($_POST['add'])){
-		$gname=$_POST['group_name'];
+		$gname=$_POST['grp_name'];
+		echo $gname;
 		$cno=$_POST['contact_phone_number'];
-		$sa="SELECT * FROM contacts WHERE phone='$cno' AND u_id='$id' AND status=1";
+				echo $cno;
+		$sa="SELECT * FROM contacts WHERE phone='$cno' AND u_id='$id' AND status='1'";
+		echo $sa;
 		$sa1=mysqli_query($con,$sa);
 		if(mysqli_num_rows($sa1)>0){
 			$r=mysqli_fetch_array($sa1);
 			$iiid=$r['id'];
 			$g_id=$r['g_id'];
-			if($g_id==""){
+			if($g_id=="0"){
 				$gid=$gname;
 			}else{
 				$gid=$g_id.",".$gname;
 			}
+			
+			echo $g_id;
+			echo $gid;
 			$sas="UPDATE `contacts` SET g_id='$gid' WHERE id='$iiid'";
 			$sas1=mysqli_query($con,$sas);
 			if(mysqli_affected_rows($con)>0){

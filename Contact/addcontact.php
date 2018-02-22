@@ -65,11 +65,11 @@
 			$mana1=mysqli_query($con,$mana);
 			if(mysqli_affected_rows($con)>0){
 				echo "<script>alert('contact Added');</script>";
-				echo "<script>window.location.href='welcome.html'</script>";
+				echo "<script>window.location.href='welcome.php'</script>";
 			}
 		}else{
 				echo "<script>alert('contact Already Added');</script>";
-				echo "<script>window.location.href='welcome.html'</script>";
+				echo "<script>window.location.href='welcome.php'</script>";
 		}
 	}
 ?>

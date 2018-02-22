@@ -28,7 +28,7 @@
   </head>
   <body>
       <div class="topnav">
-        <a href="welcome.html" class="active">Home</a>
+        <a href="welcome.php" class="active">Home</a>
         <a href="addcontact.php">Add Contact</a>
         <a href="addGroup.php">Add Group</a>
   <a href="addcontactgrp.php">Add Contact to Group</a>
@@ -52,9 +52,11 @@
         <tbody>
           <?php $sq="SELECT * FROM contacts WHERE u_id='$id'";
                 $mana1=mysqli_query($con,$sq);
+				$n=0;
                 while($r=mysqli_fetch_array($mana1)){
+					$n=$n+1;
            ?>
-          <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+          <tr><td><?php echo $n; ?></td><td><?php echo $r['name']; ?></td><td><?php echo $r['phone']; ?></td><td><?php echo $r['email']; ?></td><td><?php echo $r['g_id']; ?></td></tr>
           <?php } ?>
 </tbody>
 </div>
@@ -96,7 +98,7 @@ $(document).ready(function(){
            "paging"      : true,
       "lengthChange": true,
       "searching"   : true,
-      "ordering"    : false,
+      "ordering"    : true,
       "info"        : true,
       "autoWidth"   : true,
         "order": [[ 0, "desc" ]]
